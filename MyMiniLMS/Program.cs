@@ -109,7 +109,12 @@ public class Program
 
     private static string ConvertDatabaseUrl(string databaseUrl)
     {
-        var uri = new Uri(databaseUrl);
+        if (!Uri.TryCreate(databaseUrl, UriKind.Absolute, out var uri) ||
+            (uri.Scheme != "postgres" && uri.Scheme != "postgresql"))
+        {
+            return databaseUrl;
+        }
+
         var userInfo = uri.UserInfo.Split(':', 2);
 
         var connectionString = new NpgsqlConnectionStringBuilder
