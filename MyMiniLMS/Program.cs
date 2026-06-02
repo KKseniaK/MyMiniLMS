@@ -109,6 +109,8 @@ public class Program
 
     private static string ConvertDatabaseUrl(string databaseUrl)
     {
+        databaseUrl = ExtractDatabaseUrl(databaseUrl);
+
         if (!Uri.TryCreate(databaseUrl, UriKind.Absolute, out var uri) ||
             (uri.Scheme != "postgres" && uri.Scheme != "postgresql"))
         {
@@ -132,5 +134,27 @@ public class Program
         }
 
         return connectionString.ConnectionString;
+    }
+
+    private static string ExtractDatabaseUrl(string databaseUrl)
+    {
+        var value = databaseUrl.Trim().Trim('"', '\'');
+
+        foreach (var prefix in new[] { "postgresql://", "postgres://" })
+        {
+            var startIndex = value.IndexOf(prefix, StringComparison.OrdinalIgnoreCase);
+
+            if (startIndex < 0)
+            {
+                continue;
+            }
+
+            var endIndex = value.IndexOfAny([' ', '\r', '\n', '\t'], startIndex);
+            return endIndex < 0
+                ? value[startIndex..].Trim().Trim('"', '\'')
+                : value[startIndex..endIndex].Trim().Trim('"', '\'');
+        }
+
+        return value;
     }
 }
