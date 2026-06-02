@@ -1,0 +1,80 @@
+@model MyMiniLMS.ViewModels.CalendarVm
+
+@{
+    ViewData["Title"] = L["Calendar"];
+    var monthTitle = new DateTime(Model.Year, Model.Month, 1)
+        .ToString("MMMM yyyy", System.Globalization.CultureInfo.CurrentUICulture);
+    var weekDays = System.Globalization.CultureInfo.CurrentUICulture
+        .DateTimeFormat
+        .AbbreviatedDayNames;
+    var mondayFirstWeekDays = weekDays.Skip(1).Concat(weekDays.Take(1)).ToList();
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">@L["Calendar"]</h1>
+
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-secondary"
+           asp-action="Index"
+           asp-route-year="@Model.PreviousMonth.Year"
+           asp-route-month="@Model.PreviousMonth.Month">
+            @L["PreviousMonth"]
+        </a>
+
+        <a class="btn btn-outline-primary" asp-action="Index">
+            @L["Today"]
+        </a>
+
+        <a class="btn btn-outline-secondary"
+           asp-action="Index"
+           asp-route-year="@Model.NextMonth.Year"
+           asp-route-month="@Model.NextMonth.Month">
+            @L["NextMonth"]
+        </a>
+    </div>
+</div>
+
+<h2 class="h4 text-muted mb-3 text-capitalize">@monthTitle</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered calendar-table align-middle">
+        <thead class="table-light">
+            <tr>
+                @foreach (var dayName in mondayFirstWeekDays)
+                {
+                    <th class="text-center">@dayName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (var week = 0; week < 6; week++)
+            {
+                <tr>
+                    @for (var day = 0; day < 7; day++)
+                    {
+                        var calendarDay = Model.Days[week * 7 + day];
+                        <td class="calendar-day @(calendarDay.IsCurrentMonth ? "" : "text-muted bg-light") @(calendarDay.IsToday ? "border-primary" : "")">
+                            <div class="fw-semibold mb-2">@calendarDay.Date.Day</div>
+
+                            @if (!calendarDay.Assignments.Any())
+                            {
+                                <div class="small text-muted">@L["NoDeadlines"]</div>
+                            }
+                            else
+                            {
+                                @foreach (var assignment in calendarDay.Assignments)
+                                {
+                                    <div class="small p-2 mb-1 rounded bg-primary-subtle">
+                                        <div class="fw-semibold">@assignment.AssignmentTitle</div>
+                                        <div>@assignment.CourseName</div>
+                                        <div>@assignment.Deadline.ToLocalTime().ToString("HH:mm")</div>
+                                    </div>
+                                }
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

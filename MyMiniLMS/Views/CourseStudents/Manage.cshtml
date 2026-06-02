@@ -1,0 +1,73 @@
+@model MyMiniLMS.ViewModels.AssignStudentsVm
+
+@{
+    ViewData["Title"] = L["StudentsOnCourse"];
+}
+
+<h1>@L["StudentsOnCourse"]</h1>
+
+<p class="text-muted">
+    @L["CoursePrefix"] <strong>@Model.CourseName</strong>
+</p>
+
+<table class="table table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>@L["FullName"]</th>
+            <th>@L["Email"]</th>
+            <th>@L["Status"]</th>
+            <th style="width: 180px;">@L["Actions"]</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td class="fw-semibold">@student.FullName</td>
+                <td>@student.Email</td>
+                <td>
+                    @if (student.IsAssigned)
+                    {
+                        <span class="badge bg-success">@L["Assigned"]</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">@L["NotAssigned"]</span>
+                    }
+                </td>
+                <td>
+                    @if (student.IsAssigned)
+                    {
+                        <form asp-action="Unassign" method="post" class="d-inline">
+                            <input type="hidden" name="courseId" value="@Model.CourseId" />
+                            <input type="hidden" name="studentId" value="@student.StudentId" />
+
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                @L["Unassign"]
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="Assign" method="post" class="d-inline">
+                            <input type="hidden" name="courseId" value="@Model.CourseId" />
+                            <input type="hidden" name="studentId" value="@student.StudentId" />
+
+                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                @L["Assign"]
+                            </button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Course"
+   asp-action="Details"
+   asp-route-id="@Model.CourseId"
+   class="btn btn-secondary">
+    @L["BackToCourse"]
+</a>

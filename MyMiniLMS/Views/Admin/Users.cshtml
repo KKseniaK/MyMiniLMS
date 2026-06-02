@@ -1,0 +1,102 @@
+@model List<MyMiniLMS.ViewModels.AdminUserVm>
+@{
+    ViewData["Title"] = L["Users"];
+@functions {
+    string GetRoleBadgeClass(string role)
+    {
+        return role switch
+        {
+            "Admin" => "bg-danger",
+            "Teacher" => "bg-primary",
+            "Student" => "bg-success",
+            _ => "bg-secondary"
+        };
+    }
+
+    string RoleKey(string role)
+    {
+        return role switch
+        {
+            "Admin" => "Role_Admin",
+            "Teacher" => "Role_Teacher",
+            "Student" => "Role_Student",
+            _ => role
+        };
+    }
+}
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="mb-1">@L["Users"]</h1>
+        <p class="text-muted mb-0">
+            @L["UsersDescription"]
+        </p>
+    </div>
+</div>
+
+<div class="mb-3 d-flex gap-2">
+    <a class="btn btn-outline-success"
+       asp-controller="Reports"
+       asp-action="OverdueXlsx">
+        @L["OverdueReportXlsx"]
+    </a>
+    <a class="btn btn-outline-primary"
+       asp-controller="Reports"
+       asp-action="OverdueDocx">
+        @L["OverdueReportDocx"]
+    </a>
+</div>
+
+<table class="table table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>@L["FullName"]</th>
+            <th>@L["Email"]</th>
+            <th style="width: 220px;">@L["Role"]</th>
+            <th style="width: 240px;">@L["Actions"]</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td class="fw-semibold">@user.FullName</td>
+                <td>@user.Email</td>
+                <td>
+                    @foreach (var role in user.Roles)
+                    {
+                        <span class="badge @GetRoleBadgeClass(role) me-1">
+                            @L[RoleKey(role)]
+                        </span>
+                    }
+                </td>
+                <td>
+                    @if (user.Roles.Contains("Admin"))
+                    {
+                        <span class="text-muted">@L["NoActions"]</span>
+                    }
+                    else if (user.Roles.Contains("Teacher"))
+                    {
+                        <form asp-action="RemoveTeacher" method="post" class="d-inline">
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                @L["RemoveTeacher"]
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="MakeTeacher" method="post" class="d-inline">
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                @L["MakeTeacher"]
+                            </button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+@model MyMiniLMS.Models.Assignment
+
+@{
+    ViewData["Title"] = L["EditAssignment"];
+}
+
+<h1>@L["EditAssignment"]</h1>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CourseId" />
+    <input type="hidden" asp-for="CreatedAt" />
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">@L["Title"]</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">@L["Description"]</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Deadline" class="form-label">@L["Deadline"]</label>
+        <input asp-for="Deadline" type="datetime-local" class="form-control" />
+        <span asp-validation-for="Deadline" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">@L["SaveChanges"]</button>
+
+    <a asp-controller="Course"
+       asp-action="Details"
+       asp-route-id="@Model.CourseId"
+       class="btn btn-secondary">
+        @L["Back"]
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

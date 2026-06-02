@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.git/
+**/.build-check*/
+Dockerfile
+docker-compose.yml
+.env
+.env.*
+!/.env.example
+README.md

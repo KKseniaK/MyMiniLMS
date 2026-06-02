@@ -1,0 +1,161 @@
+@model MyMiniLMS.ViewModels.TeacherCourseDetailsVm
+
+@{
+    ViewData["Title"] = L["CourseDetails"];
+    var course = Model.Course;
+}
+
+<div class="d-flex justify-content-between align-items-start mb-3">
+    <div>
+        <h1>@course.Name</h1>
+        <p><strong>@L["Description"]:</strong> @course.Description</p>
+        <p><strong>@L["CreatedAt"]:</strong> @course.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</p>
+        <p><strong>@L["Teacher"]:</strong> @(course.Teacher?.FullName ?? L["NoTeacher"])</p>
+    </div>
+
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-success"
+           asp-controller="Reports"
+           asp-action="OverdueXlsx"
+           asp-route-courseId="@course.Id">
+            @L["OverdueXlsx"]
+        </a>
+        <a class="btn btn-outline-primary"
+           asp-controller="Reports"
+           asp-action="OverdueDocx"
+           asp-route-courseId="@course.Id">
+            @L["OverdueDocx"]
+        </a>
+    </div>
+</div>
+
+<hr />
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>@L["Assignments"]</h2>
+
+    <div class="d-flex gap-2">
+        <a class="btn btn-primary"
+           asp-controller="Assignment"
+           asp-action="Create"
+           asp-route-courseId="@course.Id">
+            @L["AddAssignment"]
+        </a>
+
+        <a class="btn btn-outline-primary"
+           asp-controller="CourseStudents"
+           asp-action="Manage"
+           asp-route-courseId="@course.Id">
+            @L["ManageStudents"]
+        </a>
+    </div>
+</div>
+
+@if (course.Assignments == null || !course.Assignments.Any())
+{
+    <div class="alert alert-info">
+        @L["NoAssignmentsForCourse"]
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>@L["Title"]</th>
+                <th>@L["Description"]</th>
+                <th>@L["Deadline"]</th>
+                <th>@L["Actions"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var assignment in course.Assignments.OrderBy(a => a.Deadline))
+            {
+                <tr>
+                    <td>@assignment.Title</td>
+                    <td>@assignment.Description</td>
+                    <td>
+                        @(assignment.Deadline.HasValue
+                            ? assignment.Deadline.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+                            : L["NoDeadline"])
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-warning"
+                           asp-controller="Assignment"
+                           asp-action="Edit"
+                           asp-route-id="@assignment.Id">
+                            @L["Edit"]
+                        </a>
+
+                        <a class="btn btn-sm btn-danger"
+                           asp-controller="Assignment"
+                           asp-action="Delete"
+                           asp-route-id="@assignment.Id">
+                            @L["Delete"]
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<h2 class="mt-4">@L["AssignedStudents"]</h2>
+
+@if (!Model.Students.Any())
+{
+    <div class="alert alert-info">@L["NoStudentsAssigned"]</div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@L["FullName"]</th>
+                <th>@L["Email"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                <tr>
+                    <td>@student.FullName</td>
+                    <td>@student.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<h2 class="mt-4">@L["Progress"]</h2>
+
+@if (!Model.Progress.Any())
+{
+    <div class="alert alert-info">@L["NoProgressData"]</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@L["Assignment"]</th>
+                <th>@L["Completed"]</th>
+                <th>@L["InProgress"]</th>
+                <th>@L["NotStarted"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Progress)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.CompletedCount</td>
+                    <td>@item.InProgressCount</td>
+                    <td>@item.NotStartedCount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Index" class="btn btn-secondary">@L["BackToCourses"]</a>

@@ -1,0 +1,133 @@
+@model MyMiniLMS.ViewModels.StudentCourseDetailsVm
+@using MyMiniLMS.Models
+
+@functions {
+    string StatusKey(AssignmentStatus status)
+    {
+        return status switch
+        {
+            AssignmentStatus.NotStarted => "Status_NotStarted",
+            AssignmentStatus.InProgress => "Status_InProgress",
+            AssignmentStatus.Completed => "Status_Completed",
+            _ => status.ToString()
+        };
+    }
+}
+
+@{
+    ViewData["Title"] = Model.CourseName;
+}
+
+<div class="d-flex justify-content-between align-items-start mb-3">
+    <div>
+        <h1>@L["CoursePrefix"] @Model.CourseName</h1>
+        <p class="text-muted">@Model.Description</p>
+    </div>
+
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-success"
+           asp-controller="Reports"
+           asp-action="StudentCourseXlsx"
+           asp-route-courseId="@Model.CourseId">
+            @L["ExportXlsx"]
+        </a>
+        <a class="btn btn-outline-primary"
+           asp-controller="Reports"
+           asp-action="StudentCourseDocx"
+           asp-route-courseId="@Model.CourseId">
+            @L["ExportDocx"]
+        </a>
+    </div>
+</div>
+
+<form method="get" class="row gy-2 gx-3 align-items-end mb-4">
+    <div class="col-md-4">
+        <label class="form-label" for="status">@L["Filter"]</label>
+        <select class="form-select" id="status" name="status">
+            <option value="">@L["All"]</option>
+            @foreach (var status in Enum.GetValues<AssignmentStatus>())
+            {
+                <option value="@status" selected="@(Model.StatusFilter == status)">
+                    @L[StatusKey(status)]
+                </option>
+            }
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label" for="sort">@L["Sort"]</label>
+        <select class="form-select" id="sort" name="sort">
+            <option value="" selected="@(string.IsNullOrEmpty(Model.Sort))">@L["NoSorting"]</option>
+            <option value="deadline_asc" selected="@(Model.Sort == "deadline_asc")">@L["DeadlineAsc"]</option>
+            <option value="deadline_desc" selected="@(Model.Sort == "deadline_desc")">@L["DeadlineDesc"]</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-primary">@L["Apply"]</button>
+        <a class="btn btn-secondary"
+           asp-action="Course"
+           asp-route-id="@Model.CourseId">
+            @L["ResetFilters"]
+        </a>
+    </div>
+</form>
+
+@if (!Model.Assignments.Any())
+{
+    <div class="alert alert-info">@L["NoAssignmentsFound"]</div>
+}
+else
+{
+    <table class="table table-bordered table-striped align-middle">
+        <thead>
+            <tr>
+                <th>@L["Title"]</th>
+                <th>@L["Description"]</th>
+                <th>@L["Deadline"]</th>
+                <th>@L["Status"]</th>
+                <th style="width: 260px;">@L["Actions"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var assignment in Model.Assignments)
+            {
+                <tr>
+                    <td class="fw-semibold">@assignment.Title</td>
+                    <td>@assignment.Description</td>
+                    <td>
+                        @(assignment.Deadline.HasValue
+                            ? assignment.Deadline.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+                            : L["NoDeadline"])
+                    </td>
+                    <td>
+                        <span class="badge bg-@(assignment.Status == AssignmentStatus.Completed ? "success" : assignment.Status == AssignmentStatus.InProgress ? "warning text-dark" : "secondary")">
+                            @L[StatusKey(assignment.Status)]
+                        </span>
+                    </td>
+                    <td>
+                        <form asp-action="UpdateStatus" method="post" class="d-inline">
+                            <input type="hidden" name="assignmentId" value="@assignment.AssignmentId" />
+                            <input type="hidden" name="status" value="@AssignmentStatus.InProgress" />
+                            <button type="submit" class="btn btn-sm btn-outline-warning">@L["Start"]</button>
+                        </form>
+
+                        <form asp-action="UpdateStatus" method="post" class="d-inline">
+                            <input type="hidden" name="assignmentId" value="@assignment.AssignmentId" />
+                            <input type="hidden" name="status" value="@AssignmentStatus.Completed" />
+                            <button type="submit" class="btn btn-sm btn-outline-success">@L["Complete"]</button>
+                        </form>
+
+                        <form asp-action="UpdateStatus" method="post" class="d-inline">
+                            <input type="hidden" name="assignmentId" value="@assignment.AssignmentId" />
+                            <input type="hidden" name="status" value="@AssignmentStatus.NotStarted" />
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">@L["Reset"]</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Dashboard" class="btn btn-secondary">@L["BackToMyCourses"]</a>

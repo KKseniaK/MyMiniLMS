@@ -1,0 +1,74 @@
+@model List<MyMiniLMS.Models.Course>
+
+@{
+    var pageTitleKey = ViewBag.PageTitleKey as string ?? "Courses";
+    ViewData["Title"] = L[pageTitleKey];
+}
+
+<h1>@L[pageTitleKey]</h1>
+
+@if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+{
+    <a class="btn btn-primary mb-3"
+       asp-action="Create">
+        @L["AddCourse"]
+    </a>
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>@L["Name"]</th>
+            <th>@L["Description"]</th>
+            <th>@L["Teacher"]</th>
+            <th>@L["CreatedAt"]</th>
+            <th>@L["Actions"]</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Name</td>
+                <td>@course.Description</td>
+                <td>@(course.Teacher?.FullName ?? L["NoTeacher"])</td>
+                <td>@course.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                <td>
+                    @if (User.IsInRole("Student") && !User.IsInRole("Teacher") && !User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-sm btn-info"
+                           asp-controller="Student"
+                           asp-action="Course"
+                           asp-route-id="@course.Id">
+                            @L["Open"]
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-sm btn-info"
+                           asp-action="Details"
+                           asp-route-id="@course.Id">
+                            @L["Details"]
+                        </a>
+                    }
+
+                    @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-sm btn-warning"
+                           asp-action="Edit"
+                           asp-route-id="@course.Id">
+                            @L["Edit"]
+                        </a>
+
+                        <a class="btn btn-sm btn-danger"
+                           asp-action="Delete"
+                           asp-route-id="@course.Id">
+                            @L["Delete"]
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

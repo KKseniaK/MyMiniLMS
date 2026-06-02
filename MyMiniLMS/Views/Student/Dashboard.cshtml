@@ -1,0 +1,49 @@
+@model MyMiniLMS.ViewModels.StudentDashboardVm
+
+@{
+    ViewData["Title"] = L["MyCourses"];
+}
+
+<h1>@L["MyCourses"]</h1>
+
+@if (!Model.Courses.Any())
+{
+    <div class="alert alert-info">
+        @L["NoAssignedCourses"]
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var course in Model.Courses)
+        {
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@course.CourseName</h5>
+
+                        <p class="card-text text-muted">
+                            @course.Description
+                        </p>
+
+                        <p class="mb-1">
+                            <strong>@L["Teacher"]:</strong> @(string.IsNullOrWhiteSpace(course.TeacherName) ? L["NoTeacher"] : course.TeacherName)
+                        </p>
+
+                        <p class="mb-3">
+                            <strong>@L["Progress"]:</strong>
+                            @course.CompletedCount / @course.AssignmentsCount
+                        </p>
+
+                        <a class="btn btn-primary"
+                           asp-controller="Student"
+                           asp-action="Course"
+                           asp-route-id="@course.CourseId">
+                            @L["OpenCourse"]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
