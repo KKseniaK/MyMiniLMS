@@ -1,6 +1,9 @@
 @model List<MyMiniLMS.ViewModels.AdminUserVm>
+
 @{
     ViewData["Title"] = L["Users"];
+}
+
 @functions {
     string GetRoleBadgeClass(string role)
     {
@@ -24,7 +27,6 @@
         };
     }
 }
-}
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
@@ -35,12 +37,20 @@
     </div>
 </div>
 
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
 <div class="mb-3 d-flex gap-2">
     <a class="btn btn-outline-success"
        asp-controller="Reports"
        asp-action="OverdueXlsx">
         @L["OverdueReportXlsx"]
     </a>
+
     <a class="btn btn-outline-primary"
        asp-controller="Reports"
        asp-action="OverdueDocx">
@@ -54,7 +64,7 @@
             <th>@L["FullName"]</th>
             <th>@L["Email"]</th>
             <th style="width: 220px;">@L["Role"]</th>
-            <th style="width: 240px;">@L["Actions"]</th>
+            <th style="width: 360px;">@L["Actions"]</th>
         </tr>
     </thead>
 
@@ -77,21 +87,38 @@
                     {
                         <span class="text-muted">@L["NoActions"]</span>
                     }
-                    else if (user.Roles.Contains("Teacher"))
-                    {
-                        <form asp-action="RemoveTeacher" method="post" class="d-inline">
-                            <input type="hidden" name="userId" value="@user.Id" />
-                            <button type="submit" class="btn btn-sm btn-outline-danger">
-                                @L["RemoveTeacher"]
-                            </button>
-                        </form>
-                    }
                     else
                     {
-                        <form asp-action="MakeTeacher" method="post" class="d-inline">
+                        if (user.Roles.Contains("Teacher"))
+                        {
+                            <form asp-action="RemoveTeacher"
+                                  method="post"
+                                  class="d-inline">
+                                <input type="hidden" name="userId" value="@user.Id" />
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    @L["RemoveTeacher"]
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-action="MakeTeacher"
+                                  method="post"
+                                  class="d-inline">
+                                <input type="hidden" name="userId" value="@user.Id" />
+                                <button type="submit" class="btn btn-sm btn-outline-primary">
+                                    @L["MakeTeacher"]
+                                </button>
+                            </form>
+                        }
+
+                        <form asp-action="DeleteUser"
+                              method="post"
+                              class="d-inline ms-1"
+                              onsubmit="return confirm('@L["ConfirmDeleteUser"]');">
                             <input type="hidden" name="userId" value="@user.Id" />
-                            <button type="submit" class="btn btn-sm btn-outline-primary">
-                                @L["MakeTeacher"]
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                @L["Delete"]
                             </button>
                         </form>
                     }

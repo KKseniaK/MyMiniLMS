@@ -1,117 +1,453 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
-  <resheader name="version"><value>2.0</value></resheader>
-  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="Courses" xml:space="preserve"><value>Курсы</value></data>
-  <data name="MyCourses" xml:space="preserve"><value>Мои курсы</value></data>
-  <data name="Users" xml:space="preserve"><value>Пользователи</value></data>
-  <data name="Email" xml:space="preserve"><value>Email</value></data>
-  <data name="Login" xml:space="preserve"><value>Войти</value></data>
-  <data name="Register" xml:space="preserve"><value>Регистрация</value></data>
-  <data name="Logout" xml:space="preserve"><value>Выйти</value></data>
-  <data name="NoAssignedCourses" xml:space="preserve"><value>Вы пока не назначены ни на один курс.</value></data>
-  <data name="Teacher" xml:space="preserve"><value>Преподаватель</value></data>
-  <data name="NoTeacher" xml:space="preserve"><value>Без преподавателя</value></data>
-  <data name="Progress" xml:space="preserve"><value>Прогресс</value></data>
-  <data name="OpenCourse" xml:space="preserve"><value>Открыть курс</value></data>
-  <data name="CoursePrefix" xml:space="preserve"><value>Курс:</value></data>
-  <data name="ExportXlsx" xml:space="preserve"><value>Отчет xlsx</value></data>
-  <data name="ExportDocx" xml:space="preserve"><value>Отчет docx</value></data>
-  <data name="Filter" xml:space="preserve"><value>Фильтр</value></data>
-  <data name="All" xml:space="preserve"><value>Все</value></data>
-  <data name="Sort" xml:space="preserve"><value>Сортировка</value></data>
-  <data name="NoSorting" xml:space="preserve"><value>Без сортировки</value></data>
-  <data name="DeadlineAsc" xml:space="preserve"><value>Дедлайн по возрастанию</value></data>
-  <data name="DeadlineDesc" xml:space="preserve"><value>Дедлайн по убыванию</value></data>
-  <data name="Apply" xml:space="preserve"><value>Применить</value></data>
-  <data name="ResetFilters" xml:space="preserve"><value>Сбросить</value></data>
-  <data name="NoAssignmentsFound" xml:space="preserve"><value>Заданий не найдено.</value></data>
-  <data name="Title" xml:space="preserve"><value>Название</value></data>
-  <data name="Name" xml:space="preserve"><value>Название</value></data>
-  <data name="Description" xml:space="preserve"><value>Описание</value></data>
-  <data name="Deadline" xml:space="preserve"><value>Дедлайн</value></data>
-  <data name="Status" xml:space="preserve"><value>Статус</value></data>
-  <data name="Actions" xml:space="preserve"><value>Действия</value></data>
-  <data name="NoDeadline" xml:space="preserve"><value>Без дедлайна</value></data>
-  <data name="Start" xml:space="preserve"><value>Начать</value></data>
-  <data name="Complete" xml:space="preserve"><value>Завершить</value></data>
-  <data name="Reset" xml:space="preserve"><value>Сбросить</value></data>
-  <data name="BackToMyCourses" xml:space="preserve"><value>Назад к моим курсам</value></data>
-  <data name="Status_NotStarted" xml:space="preserve"><value>Не начато</value></data>
-  <data name="Status_InProgress" xml:space="preserve"><value>В работе</value></data>
-  <data name="Status_Completed" xml:space="preserve"><value>Выполнено</value></data>
-  <data name="AddCourse" xml:space="preserve"><value>Добавить курс</value></data>
-  <data name="CreatedAt" xml:space="preserve"><value>Создан</value></data>
-  <data name="Open" xml:space="preserve"><value>Открыть</value></data>
-  <data name="Details" xml:space="preserve"><value>Подробнее</value></data>
-  <data name="Edit" xml:space="preserve"><value>Изменить</value></data>
-  <data name="Delete" xml:space="preserve"><value>Удалить</value></data>
-  <data name="CourseDetails" xml:space="preserve"><value>Курс</value></data>
-  <data name="OverdueXlsx" xml:space="preserve"><value>Просрочки xlsx</value></data>
-  <data name="OverdueDocx" xml:space="preserve"><value>Просрочки docx</value></data>
-  <data name="Assignments" xml:space="preserve"><value>Задания</value></data>
-  <data name="AddAssignment" xml:space="preserve"><value>Добавить задание</value></data>
-  <data name="ManageStudents" xml:space="preserve"><value>Назначить студентов</value></data>
-  <data name="NoAssignmentsForCourse" xml:space="preserve"><value>В этом курсе пока нет заданий.</value></data>
-  <data name="AssignedStudents" xml:space="preserve"><value>Назначенные студенты</value></data>
-  <data name="NoStudentsAssigned" xml:space="preserve"><value>Студенты пока не назначены.</value></data>
-  <data name="FullName" xml:space="preserve"><value>ФИО</value></data>
-  <data name="NoProgressData" xml:space="preserve"><value>Данных о прогрессе пока нет.</value></data>
-  <data name="Assignment" xml:space="preserve"><value>Задание</value></data>
-  <data name="Completed" xml:space="preserve"><value>Выполнено</value></data>
-  <data name="InProgress" xml:space="preserve"><value>В работе</value></data>
-  <data name="NotStarted" xml:space="preserve"><value>Не начато</value></data>
-  <data name="BackToCourses" xml:space="preserve"><value>Назад к курсам</value></data>
-  <data name="CourseName" xml:space="preserve"><value>Название курса</value></data>
-  <data name="Save" xml:space="preserve"><value>Сохранить</value></data>
-  <data name="SaveChanges" xml:space="preserve"><value>Сохранить изменения</value></data>
-  <data name="Back" xml:space="preserve"><value>Назад</value></data>
-  <data name="EditCourse" xml:space="preserve"><value>Изменить курс</value></data>
-  <data name="DeleteCourse" xml:space="preserve"><value>Удалить курс</value></data>
-  <data name="DeleteCourseConfirm" xml:space="preserve"><value>Вы уверены, что хотите удалить этот курс?</value></data>
-  <data name="EditAssignment" xml:space="preserve"><value>Изменить задание</value></data>
-  <data name="DeleteAssignment" xml:space="preserve"><value>Удалить задание</value></data>
-  <data name="DeleteAssignmentConfirm" xml:space="preserve"><value>Вы уверены, что хотите удалить это задание?</value></data>
-  <data name="StudentsOnCourse" xml:space="preserve"><value>Управление студентами курса</value></data>
-  <data name="Assigned" xml:space="preserve"><value>Назначен</value></data>
-  <data name="NotAssigned" xml:space="preserve"><value>Не назначен</value></data>
-  <data name="Assign" xml:space="preserve"><value>Назначить</value></data>
-  <data name="Unassign" xml:space="preserve"><value>Снять</value></data>
-  <data name="BackToCourse" xml:space="preserve"><value>Назад к курсу</value></data>
-  <data name="UsersDescription" xml:space="preserve"><value>Управление пользователями и ролями доступа.</value></data>
-  <data name="OverdueReportXlsx" xml:space="preserve"><value>Отчет по просрочкам xlsx</value></data>
-  <data name="OverdueReportDocx" xml:space="preserve"><value>Отчет по просрочкам docx</value></data>
-  <data name="Role" xml:space="preserve"><value>Роль</value></data>
-  <data name="Role_Admin" xml:space="preserve"><value>Администратор</value></data>
-  <data name="Role_Teacher" xml:space="preserve"><value>Преподаватель</value></data>
-  <data name="Role_Student" xml:space="preserve"><value>Студент</value></data>
-  <data name="NoActions" xml:space="preserve"><value>Нет действий</value></data>
-  <data name="MakeTeacher" xml:space="preserve"><value>Сделать преподавателем</value></data>
-  <data name="RemoveTeacher" xml:space="preserve"><value>Снять преподавателя</value></data>
-  <data name="Home" xml:space="preserve"><value>Главная</value></data>
-  <data name="PrivacyPolicy" xml:space="preserve"><value>Политика конфиденциальности</value></data>
-  <data name="Error" xml:space="preserve"><value>Ошибка</value></data>
-  <data name="RequestId" xml:space="preserve"><value>Идентификатор запроса</value></data>
-  <data name="ReportStudentTitle" xml:space="preserve"><value>Отчет по заданиям студента</value></data>
-  <data name="ReportOverdueTitle" xml:space="preserve"><value>Просроченные задания</value></data>
-  <data name="ReportCourse" xml:space="preserve"><value>Курс</value></data>
-  <data name="ReportStudent" xml:space="preserve"><value>Студент</value></data>
-  <data name="ReportEmail" xml:space="preserve"><value>Email</value></data>
-  <data name="ReportAssignment" xml:space="preserve"><value>Задание</value></data>
-  <data name="ReportDescription" xml:space="preserve"><value>Описание</value></data>
-  <data name="ReportDeadlineUtc" xml:space="preserve"><value>Дедлайн UTC</value></data>
-  <data name="ReportStatus" xml:space="preserve"><value>Статус</value></data>
-  <data name="ReportStartedUtc" xml:space="preserve"><value>Начато UTC</value></data>
-  <data name="ReportCompletedUtc" xml:space="preserve"><value>Завершено UTC</value></data>
-  <data name="Calendar" xml:space="preserve"><value>&#x041A;&#x0430;&#x043B;&#x0435;&#x043D;&#x0434;&#x0430;&#x0440;&#x044C;</value></data>
-  <data name="PreviousMonth" xml:space="preserve"><value>&#x041F;&#x0440;&#x0435;&#x0434;&#x044B;&#x0434;&#x0443;&#x0449;&#x0438;&#x0439;</value></data>
-  <data name="NextMonth" xml:space="preserve"><value>&#x0421;&#x043B;&#x0435;&#x0434;&#x0443;&#x044E;&#x0449;&#x0438;&#x0439;</value></data>
-  <data name="Today" xml:space="preserve"><value>&#x0421;&#x0435;&#x0433;&#x043E;&#x0434;&#x043D;&#x044F;</value></data>
-  <data name="NoDeadlines" xml:space="preserve"><value>&#x0414;&#x0435;&#x0434;&#x043B;&#x0430;&#x0439;&#x043D;&#x043E;&#x0432; &#x043D;&#x0435;&#x0442;.</value></data>
-  <data name="FooterGreeting" xml:space="preserve"><value>&#x0417;&#x0434;&#x0440;&#x0430;&#x0432;&#x0441;&#x0442;&#x0432;&#x0443;&#x0439;&#x0442;&#x0435;, {0}, &#x0432;&#x044B; &#x0437;&#x0430;&#x0448;&#x043B;&#x0438; &#x043F;&#x043E;&#x0434; &#x0440;&#x043E;&#x043B;&#x044C;&#x044E;: {1}</value></data>
-  <data name="Teaching" xml:space="preserve"><value>&#x041F;&#x0440;&#x0435;&#x043F;&#x043E;&#x0434;&#x0430;&#x0432;&#x0430;&#x043D;&#x0438;&#x0435;</value></data>
-  <data name="Password" xml:space="preserve"><value>&#x041F;&#x0430;&#x0440;&#x043E;&#x043B;&#x044C;</value></data>
-  <data name="RememberMe" xml:space="preserve"><value>&#x0417;&#x0430;&#x043F;&#x043E;&#x043C;&#x043D;&#x0438;&#x0442;&#x044C; &#x043C;&#x0435;&#x043D;&#x044F;</value></data>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Courses" xml:space="preserve">
+    <value>Курсы</value>
+  </data>
+  <data name="MyCourses" xml:space="preserve">
+    <value>Мои курсы</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="NoAssignedCourses" xml:space="preserve">
+    <value>Вы пока не назначены ни на один курс.</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>Преподаватель</value>
+  </data>
+  <data name="NoTeacher" xml:space="preserve">
+    <value>Без преподавателя</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Прогресс</value>
+  </data>
+  <data name="OpenCourse" xml:space="preserve">
+    <value>Открыть курс</value>
+  </data>
+  <data name="CoursePrefix" xml:space="preserve">
+    <value>Курс:</value>
+  </data>
+  <data name="ExportXlsx" xml:space="preserve">
+    <value>Отчет xlsx</value>
+  </data>
+  <data name="ExportDocx" xml:space="preserve">
+    <value>Отчет docx</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Сортировка</value>
+  </data>
+  <data name="NoSorting" xml:space="preserve">
+    <value>Без сортировки</value>
+  </data>
+  <data name="DeadlineAsc" xml:space="preserve">
+    <value>Дедлайн по возрастанию</value>
+  </data>
+  <data name="DeadlineDesc" xml:space="preserve">
+    <value>Дедлайн по убыванию</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="ResetFilters" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="NoAssignmentsFound" xml:space="preserve">
+    <value>Заданий не найдено.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Deadline" xml:space="preserve">
+    <value>Дедлайн</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="NoDeadline" xml:space="preserve">
+    <value>Без дедлайна</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Начать</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Завершить</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="BackToMyCourses" xml:space="preserve">
+    <value>Назад к моим курсам</value>
+  </data>
+  <data name="Status_NotStarted" xml:space="preserve">
+    <value>Не начато</value>
+  </data>
+  <data name="Status_InProgress" xml:space="preserve">
+    <value>В работе</value>
+  </data>
+  <data name="Status_Completed" xml:space="preserve">
+    <value>Выполнено</value>
+  </data>
+  <data name="AddCourse" xml:space="preserve">
+    <value>Добавить курс</value>
+  </data>
+  <data name="CreatedAt" xml:space="preserve">
+    <value>Создан</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="CourseDetails" xml:space="preserve">
+    <value>Курс</value>
+  </data>
+  <data name="OverdueXlsx" xml:space="preserve">
+    <value>Просрочки xlsx</value>
+  </data>
+  <data name="OverdueDocx" xml:space="preserve">
+    <value>Просрочки docx</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Задания</value>
+  </data>
+  <data name="AddAssignment" xml:space="preserve">
+    <value>Добавить задание</value>
+  </data>
+  <data name="ManageStudents" xml:space="preserve">
+    <value>Назначить студентов</value>
+  </data>
+  <data name="NoAssignmentsForCourse" xml:space="preserve">
+    <value>В этом курсе пока нет заданий.</value>
+  </data>
+  <data name="AssignedStudents" xml:space="preserve">
+    <value>Назначенные студенты</value>
+  </data>
+  <data name="NoStudentsAssigned" xml:space="preserve">
+    <value>Студенты пока не назначены.</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>ФИО</value>
+  </data>
+  <data name="NoProgressData" xml:space="preserve">
+    <value>Данных о прогрессе пока нет.</value>
+  </data>
+  <data name="Assignment" xml:space="preserve">
+    <value>Задание</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Выполнено</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>В работе</value>
+  </data>
+  <data name="NotStarted" xml:space="preserve">
+    <value>Не начато</value>
+  </data>
+  <data name="BackToCourses" xml:space="preserve">
+    <value>Назад к курсам</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Название курса</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Сохранить изменения</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="EditCourse" xml:space="preserve">
+    <value>Изменить курс</value>
+  </data>
+  <data name="DeleteCourse" xml:space="preserve">
+    <value>Удалить курс</value>
+  </data>
+  <data name="DeleteCourseConfirm" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этот курс?</value>
+  </data>
+  <data name="EditAssignment" xml:space="preserve">
+    <value>Изменить задание</value>
+  </data>
+  <data name="DeleteAssignment" xml:space="preserve">
+    <value>Удалить задание</value>
+  </data>
+  <data name="DeleteAssignmentConfirm" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить это задание?</value>
+  </data>
+  <data name="StudentsOnCourse" xml:space="preserve">
+    <value>Управление студентами курса</value>
+  </data>
+  <data name="Assigned" xml:space="preserve">
+    <value>Назначен</value>
+  </data>
+  <data name="NotAssigned" xml:space="preserve">
+    <value>Не назначен</value>
+  </data>
+  <data name="Assign" xml:space="preserve">
+    <value>Назначить</value>
+  </data>
+  <data name="Unassign" xml:space="preserve">
+    <value>Снять</value>
+  </data>
+  <data name="BackToCourse" xml:space="preserve">
+    <value>Назад к курсу</value>
+  </data>
+  <data name="UsersDescription" xml:space="preserve">
+    <value>Управление пользователями и ролями доступа.</value>
+  </data>
+  <data name="OverdueReportXlsx" xml:space="preserve">
+    <value>Отчет по просрочкам xlsx</value>
+  </data>
+  <data name="OverdueReportDocx" xml:space="preserve">
+    <value>Отчет по просрочкам docx</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+  <data name="Role_Admin" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
+  <data name="Role_Teacher" xml:space="preserve">
+    <value>Преподаватель</value>
+  </data>
+  <data name="Role_Student" xml:space="preserve">
+    <value>Студент</value>
+  </data>
+  <data name="NoActions" xml:space="preserve">
+    <value>Нет действий</value>
+  </data>
+  <data name="MakeTeacher" xml:space="preserve">
+    <value>Сделать преподавателем</value>
+  </data>
+  <data name="RemoveTeacher" xml:space="preserve">
+    <value>Снять преподавателя</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Политика конфиденциальности</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="RequestId" xml:space="preserve">
+    <value>Идентификатор запроса</value>
+  </data>
+  <data name="ReportStudentTitle" xml:space="preserve">
+    <value>Отчет по заданиям студента</value>
+  </data>
+  <data name="ReportOverdueTitle" xml:space="preserve">
+    <value>Просроченные задания</value>
+  </data>
+  <data name="ReportCourse" xml:space="preserve">
+    <value>Курс</value>
+  </data>
+  <data name="ReportStudent" xml:space="preserve">
+    <value>Студент</value>
+  </data>
+  <data name="ReportEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ReportAssignment" xml:space="preserve">
+    <value>Задание</value>
+  </data>
+  <data name="ReportDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="ReportDeadlineUtc" xml:space="preserve">
+    <value>Дедлайн UTC</value>
+  </data>
+  <data name="ReportStatus" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="ReportStartedUtc" xml:space="preserve">
+    <value>Начато UTC</value>
+  </data>
+  <data name="ReportCompletedUtc" xml:space="preserve">
+    <value>Завершено UTC</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="PreviousMonth" xml:space="preserve">
+    <value>Предыдущий</value>
+  </data>
+  <data name="NextMonth" xml:space="preserve">
+    <value>Следующий</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="NoDeadlines" xml:space="preserve">
+    <value>Дедлайнов нет.</value>
+  </data>
+  <data name="FooterGreeting" xml:space="preserve">
+    <value>Здравствуйте, {0}, вы зашли под ролью: {1}</value>
+  </data>
+  <data name="Teaching" xml:space="preserve">
+    <value>Преподавание</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запомнить меня</value>
+  </data>
+  <data name="ConfirmDeleteUser" xml:space="preserve">
+    <value>Удалить пользователя?</value>
+  </data>
 </root>
