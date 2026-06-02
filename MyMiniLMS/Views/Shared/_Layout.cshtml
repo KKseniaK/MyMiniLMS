@@ -4,9 +4,6 @@
 @inject UserManager<ApplicationUser> UserManager
 @{
     var currentCulture = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-    var nextCulture = currentCulture == "ru" ? "en" : "ru";
-    var languageButtonText = currentCulture == "ru" ? "EN" : "RU";
-    var returnUrl = Context.Request.PathBase + Context.Request.Path + Context.Request.QueryString;
     var signedInUser = User.Identity?.IsAuthenticated == true
         ? await UserManager.GetUserAsync(User)
         : null;
@@ -90,14 +87,6 @@
                     </ul>
 
                     <div class="d-flex align-items-center gap-2">
-                        <form asp-controller="Localization" asp-action="SetLanguage" method="post" class="d-inline">
-                            <input type="hidden" name="culture" value="@nextCulture" />
-                            <input type="hidden" name="returnUrl" value="@returnUrl" />
-                            <button type="submit" class="btn btn-sm btn-outline-secondary">
-                                @languageButtonText
-                            </button>
-                        </form>
-
                         <partial name="_LoginPartial" />
                     </div>
                 </div>

@@ -112,4 +112,6 @@
   <data name="NoDeadlines" xml:space="preserve"><value>No deadlines.</value></data>
   <data name="FooterGreeting" xml:space="preserve"><value>Hello, {0}, you are signed in as: {1}</value></data>
   <data name="Teaching" xml:space="preserve"><value>Teaching</value></data>
+  <data name="Password" xml:space="preserve"><value>Password</value></data>
+  <data name="RememberMe" xml:space="preserve"><value>Remember me</value></data>
 </root>

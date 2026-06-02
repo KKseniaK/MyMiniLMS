@@ -1,9 +1,30 @@
+@using System.Globalization
 @using Microsoft.AspNetCore.Identity
 @using MyMiniLMS.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@{
+    var currentCulture = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+    var nextCulture = currentCulture == "ru" ? "en" : "ru";
+    var languageButtonText = currentCulture == "ru" ? "EN" : "RU";
+    var returnUrl = Context.Request.PathBase + Context.Request.Path + Context.Request.QueryString;
+}
 
 <ul class="navbar-nav">
+    <li class="nav-item">
+        <form asp-area=""
+              asp-controller="Localization"
+              asp-action="SetLanguage"
+              method="post"
+              class="d-inline">
+            <input type="hidden" name="culture" value="@nextCulture" />
+            <input type="hidden" name="returnUrl" value="@returnUrl" />
+            <button type="submit" class="nav-link btn btn-link text-dark">
+                @languageButtonText
+            </button>
+        </form>
+    </li>
+
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
